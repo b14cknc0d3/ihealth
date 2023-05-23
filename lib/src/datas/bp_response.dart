@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:ihealth/src/datas/base_response.dart';
+import 'package:ihealth/src/datas/base.dart';
 
 part 'bp_response.g.dart';
 
@@ -33,7 +33,7 @@ class IHealthBpResponse extends BaseResponse {
 
   factory IHealthBpResponse.fromJson(Map<String, dynamic> json) =>
       _$IHealthBpResponseFromJson(json);
-  @override
+
   Map<String, dynamic> toJson() => _$IHealthBpResponseToJson(this);
 }
 
@@ -54,17 +54,14 @@ class IHealthBpResponse extends BaseResponse {
 ///"time_zone":"+08:00"}
 
 @JsonSerializable()
-class IHealthBp {
+class IHealthBp extends BaseData {
   @JsonKey(name: 'BPL')
   final int bpl;
-  @JsonKey(name: 'DataID')
-  final String dataId;
-  @JsonKey(name: 'DataSource')
-  final String dataSource;
+
   @JsonKey(name: 'HP')
-  final String hp;
+  final int hp;
   @JsonKey(name: 'HR')
-  final String hr;
+  final int hr;
 
   /// -1 it is null in the database
   /// 1 heart rate is normal
@@ -74,38 +71,32 @@ class IHealthBp {
   final int isArr;
   @JsonKey(name: 'LP')
   final int lp;
-  @JsonKey(name: 'LastChangeTime')
-  final int lastChangeTime;
+
   @JsonKey(name: 'Lat')
   final double lat;
   @JsonKey(name: 'Lon')
   final double lon;
-  @JsonKey(name: 'MDate')
-  final int mDate;
-  @JsonKey(name: 'Note')
-  final String note;
-  @JsonKey(name: 'TimeZone')
-  final String timeZone;
+
   @JsonKey(name: 'measurement_time')
   final DateTime measurementTime;
   @JsonKey(name: 'time_zone')
   final String timeZone2;
   IHealthBp({
     required this.bpl,
-    required this.dataId,
-    required this.dataSource,
     required this.hp,
     required this.hr,
     required this.isArr,
     required this.lp,
-    required this.lastChangeTime,
     required this.lat,
     required this.lon,
-    required this.mDate,
-    required this.note,
-    required this.timeZone,
     required this.measurementTime,
     required this.timeZone2,
+    required super.dataId,
+    required super.lastChangeTime,
+    required super.mDate,
+    required super.note,
+    required super.timeZone,
+    required super.dataSource,
   });
 
   factory IHealthBp.fromJson(Map<String, dynamic> json) =>

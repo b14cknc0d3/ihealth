@@ -74,7 +74,10 @@ class IHealthAuthUrl extends IHeathApiUrl {
 /// &page_index=2
 /// &sc=**
 /// &sv=**
-class IHealthBpUrl extends IHeathApiUrl {
+///
+
+///Data url for getting bp,hr,etc..
+class IHealthDataUrl extends IHeathApiUrl {
   /// sc for bp
   final String sc;
 
@@ -83,7 +86,8 @@ class IHealthBpUrl extends IHeathApiUrl {
 
   ///pageIndex
   final int pageIndex;
-  IHealthBpUrl(
+
+  IHealthDataUrl(
       {required this.sc,
       required this.sv,
       this.pageIndex = 1,
@@ -93,10 +97,49 @@ class IHealthBpUrl extends IHeathApiUrl {
       required super.clientSecret})
       : assert(credencial != null, "credencial cannot be null");
 
-  String getBpUrl() {
+  ///get bp url
+  String get getBpUrl {
     String userId = credencial!.userId;
     String accessToken = credencial!.accessToken;
 
     return "${AppConstant.BASE_URL}/user/$userId/bp.json/?client_id=$clientId&client_secret=$clientSecret&redirect_uri=$redirectUrl&access_token=$accessToken&sc=$sc&sv=$sv&page_index=$pageIndex";
   }
+
+  ///get heartrate url
+  String get getHeartRateUrl {
+    String userId = credencial!.userId;
+    String accessToken = credencial!.accessToken;
+
+    return "${AppConstant.BASE_URL}/user/$userId/heartrate.json/?client_id=$clientId&client_secret=$clientSecret&redirect_uri=$redirectUrl&access_token=$accessToken&sc=$sc&sv=$sv&page_index=$pageIndex";
+  }
+
+  ///get  weight url
+  String get getWeightUrl {
+    String userId = credencial!.userId;
+    String accessToken = credencial!.accessToken;
+
+    return "${AppConstant.BASE_URL}/user/$userId/weight.json/?client_id=$clientId&client_secret=$clientSecret&redirect_uri=$redirectUrl&access_token=$accessToken&sc=$sc&sv=$sv&page_index=$pageIndex";
+  }
+
+  IHealthDataUrl copyWith({
+    String? sc,
+    String? sv,
+    int? pageIndex,
+    IHealthCredencial? credencial,
+    String? redirectUrl,
+    String? clientSecret,
+    String? clientId,
+  }) {
+    return IHealthDataUrl(
+      sc: sc ?? this.sc,
+      sv: sv ?? this.sv,
+      pageIndex: pageIndex ?? this.pageIndex,
+      clientId: clientId ?? this.clientId,
+      clientSecret: clientSecret ?? this.clientSecret,
+      credencial: credencial ?? this.credencial,
+      redirectUrl: redirectUrl ?? this.redirectUrl,
+    );
+  }
 }
+
+///url for ihealth heartrate

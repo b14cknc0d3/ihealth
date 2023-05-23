@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+///Dio Healper Class
 class DioHelper {
   static final DioHelper _singleton = DioHelper._internal();
   late Dio _dio;
