@@ -38,7 +38,7 @@ IHealthWeight _$IHealthWeightFromJson(Map<String, dynamic> json) =>
       muscaleValue: json['MuscaleValue'] as int,
       waterValue: (json['WaterValue'] as num).toDouble(),
       weightValue: (json['WeightValue'] as num).toDouble(),
-      vfr: json['VFR'] as String,
+      vfr: IHealthWeight.fromJsonVfr(json['VFR']),
       bmi: (json['BMI'] as num).toDouble(),
       boneValue: json['BoneValue'] as int,
       dci: json['DCI'] as int,

@@ -59,8 +59,8 @@ class IHealthWeight extends BaseData {
   final double waterValue;
   @JsonKey(name: "WeightValue")
   final double weightValue;
-  @JsonKey(name: "VFR")
-  final String vfr;
+  @JsonKey(name: "VFR", fromJson: fromJsonVfr)
+  final int vfr;
 
   IHealthWeight(
       {required this.fatValue,
@@ -80,4 +80,15 @@ class IHealthWeight extends BaseData {
   factory IHealthWeight.fromJson(Map<String, dynamic> json) =>
       _$IHealthWeightFromJson(json);
   Map<String, dynamic> toJson() => _$IHealthWeightToJson(this);
+
+  ///static fromJson for (vfr) string in doc int in return
+  static fromJsonVfr(dynamic d) {
+    if (d is String) {
+      return int.tryParse(d) ?? 0;
+    }
+    if ((d is! int) || (d is! String)) {
+      return 0;
+    }
+    return d;
+  }
 }
