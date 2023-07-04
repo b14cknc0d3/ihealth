@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'ihealth_credencial.dart';
+part of 'ihealth_credential.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-IHealthCredencial _$IHealthCredencialFromJson(Map<String, dynamic> json) =>
-    IHealthCredencial(
+IHealthCredential _$IHealthCredentialFromJson(Map<String, dynamic> json) =>
+    IHealthCredential(
       apiName: json['APIName'] as String,
       accessToken: json['AccessToken'] as String,
       expires: json['Expires'] as int,
@@ -21,7 +21,7 @@ IHealthCredencial _$IHealthCredencialFromJson(Map<String, dynamic> json) =>
       tokenType: json['token_type'] as String,
     );
 
-Map<String, dynamic> _$IHealthCredencialToJson(IHealthCredencial instance) =>
+Map<String, dynamic> _$IHealthCredentialToJson(IHealthCredential instance) =>
     <String, dynamic>{
       'APIName': instance.apiName,
       'AccessToken': instance.accessToken,

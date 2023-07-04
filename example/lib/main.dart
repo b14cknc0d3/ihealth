@@ -25,7 +25,7 @@ class ExampleHome extends StatefulWidget {
 }
 
 class _ExampleHomeState extends State<ExampleHome> {
-  IHealthCredencial? _iHealthCredencial;
+  IHealthCredential? _iHealthCredencial;
   final String clientId = "";
   final String clientSecret = "";
   final String redirectUri = "";

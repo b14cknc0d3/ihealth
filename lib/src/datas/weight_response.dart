@@ -48,19 +48,19 @@ class IHealthWeight extends BaseData {
   @JsonKey(name: "BMI")
   final double bmi;
   @JsonKey(name: "BoneValue")
-  final int boneValue;
+  final double boneValue;
   @JsonKey(name: "DCI")
-  final int dci;
+  final double dci;
   @JsonKey(name: "FatValue")
   final double fatValue;
   @JsonKey(name: "MuscaleValue")
-  final int muscaleValue;
+  final double muscaleValue;
   @JsonKey(name: "WaterValue")
   final double waterValue;
   @JsonKey(name: "WeightValue")
   final double weightValue;
   @JsonKey(name: "VFR", fromJson: fromJsonVfr)
-  final int vfr;
+  final double vfr;
 
   IHealthWeight(
       {required this.fatValue,
@@ -84,10 +84,10 @@ class IHealthWeight extends BaseData {
   ///static fromJson for (vfr) string in doc int in return
   static fromJsonVfr(dynamic d) {
     if (d is String) {
-      return int.tryParse(d) ?? 0;
+      return double.tryParse(d) ?? 0;
     }
     if ((d is! int) || (d is! String)) {
-      return 0;
+      return 0.0;
     }
     return d;
   }

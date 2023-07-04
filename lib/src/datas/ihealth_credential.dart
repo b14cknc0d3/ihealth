@@ -13,13 +13,13 @@
 //     "token_type": "bearer"
 // }
 
-///[iHealth] credencial after authorize
+///[iHealth] credential after authorize
 ///
 import 'package:json_annotation/json_annotation.dart';
-part 'ihealth_credencial.g.dart';
+part 'ihealth_credential.g.dart';
 
 @JsonSerializable()
-class IHealthCredencial {
+class IHealthCredential {
   @JsonKey(name: 'APIName')
   final String apiName;
   @JsonKey(name: 'AccessToken')
@@ -44,7 +44,7 @@ class IHealthCredencial {
   final String clientPara;
   @JsonKey(name: "token_type")
   final String tokenType;
-  IHealthCredencial({
+  IHealthCredential({
     required this.apiName,
     required this.accessToken,
     required this.expires,
@@ -58,8 +58,8 @@ class IHealthCredencial {
     required this.tokenType,
   });
 
-  factory IHealthCredencial.fromJson(Map<String, dynamic> json) =>
-      _$IHealthCredencialFromJson(json);
+  factory IHealthCredential.fromJson(Map<String, dynamic> json) =>
+      _$IHealthCredentialFromJson(json);
 
-  Map<String, dynamic> toJson() => _$IHealthCredencialToJson(this);
+  Map<String, dynamic> toJson() => _$IHealthCredentialToJson(this);
 }

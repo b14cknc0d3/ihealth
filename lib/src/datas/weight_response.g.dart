@@ -35,13 +35,13 @@ Map<String, dynamic> _$IHealthWeightResponseToJson(
 IHealthWeight _$IHealthWeightFromJson(Map<String, dynamic> json) =>
     IHealthWeight(
       fatValue: (json['FatValue'] as num).toDouble(),
-      muscaleValue: json['MuscaleValue'] as int,
+      muscaleValue: (json['MuscaleValue'] as num).toDouble(),
       waterValue: (json['WaterValue'] as num).toDouble(),
       weightValue: (json['WeightValue'] as num).toDouble(),
       vfr: IHealthWeight.fromJsonVfr(json['VFR']),
       bmi: (json['BMI'] as num).toDouble(),
-      boneValue: json['BoneValue'] as int,
-      dci: json['DCI'] as int,
+      boneValue: (json['BoneValue'] as num).toDouble(),
+      dci: (json['DCI'] as num).toDouble(),
       dataId: json['DataID'] as String,
       lastChangeTime: json['LastChangeTime'] as int,
       mDate: json['MDate'] as int,

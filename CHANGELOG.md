@@ -6,3 +6,9 @@
 
 * breaking changes
 * added hr,bp,weight model
+
+## 0.0.3
+* weight model changed
+
+## 0.0.4
+* fix typos

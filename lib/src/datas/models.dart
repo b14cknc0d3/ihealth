@@ -1,2 +1,2 @@
-export 'ihealth_credencial.dart';
+export 'ihealth_credential.dart';
 export 'bp_response.dart';

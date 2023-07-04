@@ -6,7 +6,7 @@ abstract class IHeathApiUrl {
   final String clientId;
   final String clientSecret;
   final String redirectUrl;
-  IHealthCredencial? credencial;
+  IHealthCredential? credencial;
   IHeathApiUrl({
     this.credencial,
     required this.redirectUrl,
@@ -34,7 +34,7 @@ class IHealthAuthUrl extends IHeathApiUrl {
     required String clientSecret,
     required String clientId,
     required String redirectUri,
-    required IHealthCredencial? credencial,
+    required IHealthCredential? credencial,
   }) : super(
             credencial: credencial,
             clientSecret: clientSecret,
@@ -125,7 +125,7 @@ class IHealthDataUrl extends IHeathApiUrl {
     String? sc,
     String? sv,
     int? pageIndex,
-    IHealthCredencial? credencial,
+    IHealthCredential? credencial,
     String? redirectUrl,
     String? clientSecret,
     String? clientId,
