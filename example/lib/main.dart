@@ -50,7 +50,7 @@ class _ExampleHomeState extends State<ExampleHome> {
                           clientSecret: clientSecret,
                           clientId: clientId,
                           redirectUri: redirectUri,
-                          credencial: null);
+                          credential: null);
 
                       _iHealthCredencial = await IHealthService.authorize(
                           authUrl: iHealthAuthUrl,

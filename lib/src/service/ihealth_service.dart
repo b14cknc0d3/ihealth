@@ -131,4 +131,18 @@ class IHealthService {
       throw Exception(e);
     }
   }
+
+  static Future<IHealthCredential> refreshToken(
+      {required IHealthAuthUrl iHealthAuthUrl,
+      required String refreshToken}) async {
+    try {
+      final response = await _dioHelper.post(
+        iHealthAuthUrl.refreshTokenUrl(refreshToken),
+      );
+      _logger.i(response.data);
+      return IHealthCredential.fromJson(response.data);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

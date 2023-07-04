@@ -6,9 +6,9 @@ abstract class IHeathApiUrl {
   final String clientId;
   final String clientSecret;
   final String redirectUrl;
-  IHealthCredential? credencial;
+  IHealthCredential? credential;
   IHeathApiUrl({
-    this.credencial,
+    this.credential,
     required this.redirectUrl,
     required this.clientId,
     required this.clientSecret,
@@ -34,26 +34,15 @@ class IHealthAuthUrl extends IHeathApiUrl {
     required String clientSecret,
     required String clientId,
     required String redirectUri,
-    required IHealthCredential? credencial,
+    required IHealthCredential? credential,
   }) : super(
-            credencial: credencial,
+            credential: credential,
             clientSecret: clientSecret,
             clientId: clientId,
             redirectUrl: redirectUri);
 
   String authenticateUrl() {
     return "${AppConstant.BASE_URL}/OAuthv2/userauthorization/?response_type=code&APIName=$apiName&client_id=$clientId&client_secret=$clientSecret&redirect_uri=$redirectUrl&IsNew=False";
-  }
-
-//  https://api.ihealthlabs.com:8443/OpenApiV2/OAuthv2/userauthorization/?
-// client_id=
-// &client_secret=
-// &response_type=refresh_token
-// &redirect_uri=
-// &refresh_token=
-//TODO:
-  String refreshTokenUrl() {
-    return "";
   }
 
   ///https://api.ihealthlabs.com:8443/OpenApiV2/OAuthv2/userauthorization/?
@@ -64,6 +53,26 @@ class IHealthAuthUrl extends IHeathApiUrl {
   ///&code=
   String authorizeUrl(String code) {
     return "${AppConstant.BASE_URL}/OAuthv2/userauthorization/?client_id=$clientId&client_secret=$clientSecret&grant_type=authorization_code&redirect_uri=$redirectUrl&code=$code";
+  }
+
+//  https://api.ihealthlabs.com:8443/OpenApiV2/OAuthv2/userauthorization/?
+// client_id=
+// &client_secret=
+// &response_type=refresh_token
+// &redirect_uri=
+// &refresh_token=
+  String refreshTokenUrl(String token) {
+    return Uri.https(
+      AppConstant.BASE_URI,
+      '/OpenApiV2/OAuthv2/userauthorization',
+      {
+        "client_id": clientId,
+        "client_secret": clientSecret,
+        "response_type": "refresh_token",
+        "redirect_uri": redirectUrl,
+        "refresh_token": token,
+      },
+    ).toString();
   }
 }
 
@@ -91,32 +100,32 @@ class IHealthDataUrl extends IHeathApiUrl {
       {required this.sc,
       required this.sv,
       this.pageIndex = 1,
-      required super.credencial,
+      required super.credential,
       required super.redirectUrl,
       required super.clientId,
       required super.clientSecret})
-      : assert(credencial != null, "credencial cannot be null");
+      : assert(credential != null, "credential cannot be null");
 
   ///get bp url
   String get getBpUrl {
-    String userId = credencial!.userId;
-    String accessToken = credencial!.accessToken;
+    String userId = credential!.userId;
+    String accessToken = credential!.accessToken;
 
     return "${AppConstant.BASE_URL}/user/$userId/bp.json/?client_id=$clientId&client_secret=$clientSecret&redirect_uri=$redirectUrl&access_token=$accessToken&sc=$sc&sv=$sv&page_index=$pageIndex";
   }
 
-  ///get heartrate url
+  ///get heartRate url
   String get getHeartRateUrl {
-    String userId = credencial!.userId;
-    String accessToken = credencial!.accessToken;
+    String userId = credential!.userId;
+    String accessToken = credential!.accessToken;
 
     return "${AppConstant.BASE_URL}/user/$userId/heartrate.json/?client_id=$clientId&client_secret=$clientSecret&redirect_uri=$redirectUrl&access_token=$accessToken&sc=$sc&sv=$sv&page_index=$pageIndex";
   }
 
   ///get  weight url
   String get getWeightUrl {
-    String userId = credencial!.userId;
-    String accessToken = credencial!.accessToken;
+    String userId = credential!.userId;
+    String accessToken = credential!.accessToken;
 
     return "${AppConstant.BASE_URL}/user/$userId/weight.json/?client_id=$clientId&client_secret=$clientSecret&redirect_uri=$redirectUrl&access_token=$accessToken&sc=$sc&sv=$sv&page_index=$pageIndex";
   }
@@ -125,7 +134,7 @@ class IHealthDataUrl extends IHeathApiUrl {
     String? sc,
     String? sv,
     int? pageIndex,
-    IHealthCredential? credencial,
+    IHealthCredential? credential,
     String? redirectUrl,
     String? clientSecret,
     String? clientId,
@@ -136,7 +145,7 @@ class IHealthDataUrl extends IHeathApiUrl {
       pageIndex: pageIndex ?? this.pageIndex,
       clientId: clientId ?? this.clientId,
       clientSecret: clientSecret ?? this.clientSecret,
-      credencial: credencial ?? this.credencial,
+      credential: credential ?? credential,
       redirectUrl: redirectUrl ?? this.redirectUrl,
     );
   }

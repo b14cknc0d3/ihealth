@@ -12,3 +12,6 @@
 
 ## 0.0.4
 * fix typos
+
+## 0.0.5
+* added refreshToken method
