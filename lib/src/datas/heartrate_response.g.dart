@@ -38,6 +38,7 @@ IHeathHeartRate _$IHeathHeartRateFromJson(Map<String, dynamic> json) =>
       mDate: json['MDate'],
       note: json['Note'],
       dataSource: json['DataSource'],
+      heartRate: json['HeartRate'] as String,
     );
 
 Map<String, dynamic> _$IHeathHeartRateToJson(IHeathHeartRate instance) =>
@@ -48,4 +49,5 @@ Map<String, dynamic> _$IHeathHeartRateToJson(IHeathHeartRate instance) =>
       'Note': instance.note,
       'DataSource': instance.dataSource,
       'TimeZone': instance.timeZone,
+      'HeartRate': instance.heartRate,
     };

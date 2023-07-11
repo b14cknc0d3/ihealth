@@ -42,6 +42,8 @@ class IHeathHeartRate extends BaseData {
   )
   // ignore: overridden_fields
   final String timeZone;
+  @JsonKey(name: 'HeartRate')
+  final String heartRate;
 
   IHeathHeartRate({
     required this.timeZone,
@@ -50,13 +52,15 @@ class IHeathHeartRate extends BaseData {
     required mDate,
     required note,
     required dataSource,
+    required this.heartRate,
   }) : super(
-            dataId: dataId,
-            lastChangeTime: lastChangeTime,
-            mDate: mDate,
-            note: note,
-            timeZone: timeZone,
-            dataSource: dataSource);
+          dataId: dataId,
+          lastChangeTime: lastChangeTime,
+          mDate: mDate,
+          note: note,
+          timeZone: timeZone,
+          dataSource: dataSource,
+        );
 
   ///this time zone is int
   static String _fromJson(x) {
